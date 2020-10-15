@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="preguntas">
+  <row>
+    <data name="id_enunciado">2</data>
+    <data name="enunciado">En el ciclo de vida normal de los datos la evaluación PRECEDE a</data>
+    <data name="respuesta_a">La generación de datos</data>
+    <data name="respuesta_b">La síntesis de datos</data>
+    <data name="respuesta_c">Todas las demás operaciones salvo la introducción, generación o captura de datos</data>
+    <data name="respuesta_d">Cualquier otra operación</data>
+    <data name="valida">3</data>
+  </row>
+  <row>
+    <data name="id_enunciado">3</data>
+    <data name="enunciado">Una clave primaria corresponde a una columna de una tabla donde es seguro que no se repite ningún valor y por lo tanto, el valor de la columna en cada una de las filas identifica sin ambigüedad a esa fila</data>
+    <data name="respuesta_a">Verdadero</data>
+    <data name="respuesta_b">Falso</data>
+    <data name="respuesta_c"/>
+    <data name="respuesta_d"/>
+    <data name="valida">1</data>
+  </row>
+  <row>
+    <data name="id_enunciado">4</data>
+    <data name="enunciado">En una base de datos relacional, un registro corresponde a</data>
+    <data name="respuesta_a">Una tabla de la base de datos</data>
+    <data name="respuesta_b">Una celda en una tabla</data>
+    <data name="respuesta_c">Una columna en una tabla</data>
+    <data name="respuesta_d">Una fila en una tabla</data>
+    <data name="valida">4</data>
+  </row>
+  <row>
+    <data name="id_enunciado">6</data>
+    <data name="enunciado">Si queremos modificar el valor de una celda o más de una fila de una tabla, necesitamos usar el operador del estándar SQL</data>
+    <data name="respuesta_a">CELL</data>
+    <data name="respuesta_b">UPDATE</data>
+    <data name="respuesta_c">MODIFY</data>
+    <data name="respuesta_d">CHANGE</data>
+    <data name="valida">2</data>
+  </row>
+</table>

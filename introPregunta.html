@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      background: url(imagenes/fondotabla.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment : fixed;
+      background-position : center;
+    }
+     #enviar{
+      padding: 1em;
+      text-align: center;
+      width: 25em;
+      background: lightblue;
+      border-radius: 2em;
+    }
+     #inicio{
+      margin-top: 1.5em;
+      padding: 1em;
+      text-align: center;
+      width: 25em;
+      background: lightblue;
+      border-radius: 2em;
+      }
+      .rell{
+        height: 3em;
+      }
+  </style>
+
+
+</head>
+<body>
+ <form method="get" action="nueva.php" id="form" name="formulario">    
+<br>
+  <div>
+     <p>Enunciado</p><textarea id="enunciado"  name="enunciado" rows="10" cols="40" required style="width : 25em;"></textarea>
+  </div>
+</br>
+
+<br>   
+    <div>
+     <p>Respuesta A</p><input type="text" id="respuesta_a" class="rell" name="respuesta_a" required style="width : 25em">
+  </div>
+</br>
+<br>   
+    <div>
+     <p>Respuesta B</p><input type="text" id="respuesta_b" class="rell" name="respuesta_b" required style="width : 25em">
+  </div>
+</br>
+<br>
+     <div>
+     <p>Respuesta C</p><input type="text" id="respuesta_c" class="rell" name="respuesta_c"  style="width : 25em">
+  </div>
+</br>
+
+<br>   
+  <div>
+     <p>Respuesta D</p><input type="text" id="respuesta_d" class="rell" name="respuesta_d"  style="width : 25em">
+  </div>
+</br>
+<br>
+    <div>
+     <p>Respuesta valida</p><input type="number" id="valida" class="rell" name="valida" required style="width : 25em">
+  </div>
+</br>
+
+
+<br>
+    <input type="submit" id="enviar" name="enviar" value="Enviar">
+<br>
+    <input type="button" value="Pagina inicio" id="inicio" onclick="window.location = 'index.php'">
+
+
+</form>
+
+</body>
+</html>
+
+
+
+

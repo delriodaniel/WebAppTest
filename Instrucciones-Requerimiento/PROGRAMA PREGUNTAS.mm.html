@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title> PROGRAMA PREGUNTAS</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p> PROGRAMA PREGUNTAS
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Solicitado por el cliente</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><p>El cliente solicita la creaci&#243;n de una aplicaci&#243;n para facilitar la comprensi&#243;n de conceptos. 
+<p>La aplicaci&#243;n debe parecerse a una prueba de tipo test. Por lo general se pondran cuatro respuestas por pregunta, siendo valida solo una de ellas, a excepci&#243;n de aquellas que sean de verdadero o falso (solo se mostraran dos opciones). 
+<p>Cada respuesta correcta o incorrecta se grabara para posteriormente hacer una estad&#237;stica. Dicha estad&#237;stica se utilizara para reflejar que preguntas son las que se fallan m&#225;s y as&#237; crear un algoritmo para incidir en ellas, de este modo se facilita la adquisici&#243;n de los conocimientos. 
+</li>
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Proceso de instalaci&#243;n</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+Una vez tengamos la aplicaci&#243;n completa y funcional se han de seguir los siguientes pasos.
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><p>Se debe contratar un servicio de hosting que asegure el buen servicio de los servidores, de este modo se podra acceder desde cualquier lugar con conexi&#243;n a la red. 
+<p>Nos aseguramos de que el archivo que controla la p&#225;gina inicial de nuestra aplicaci&#243;n tenga un nombre que sea favorable para su carga autom&#225;tica en la red, como podr&#237;a ser index.php, dependiendo de la configuraci&#243;n que tengamos.
+<p><span id="show1_2_1_1" class="foldclosed" onClick="show_folder('1_2_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1" class="foldopened" onClick="hide_folder('1_2_1_1')">-</span>
+Accederemos a la p&#225;gina de nuestro proveedor para comenzar la importaci&#243;n y o creaci&#243;n de las bases de datos pertinentes y carpetas necesarias para nuestra aplicaci&#243;n
+<ul id="fold1_2_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><p><span id="show1_2_1_1_1" class="foldclosed" onClick="show_folder('1_2_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1_1" class="foldopened" onClick="hide_folder('1_2_1_1_1')">-</span>
+En el momento de subir los archivos podemos tener varias opciones para completar la operaci&#243;n, esto depende de nuestro proveedor. En este caso tenemos varias opciones
+<ul id="fold1_2_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><p>Dentro de nuestro perfil de cliente, con la/s carpeta/s creada/s, se nos permitira subir los archivos de la aplicaci&#243;n de uno en uno.
+<p>Como segunda opci&#243;n tenemos la posibilidad de usar un servicio FTP para conectar con el hosting, con este sistema podemos subir una mayor cantidad de archivos al mismo tiempo. FTP contempla la posibilidad de guardar la conexi&#243;n al hosting, facilitando el acceso para subir futuras modificaciones de los archivos.
+</li>
+</ul></li>
+</ul><p>Tras subir los archivos mediante el sistema que elijamos pasaremos a comprobar que la aplicaci&#243;n esta subida correctamente, esto quiere decir que todo este bien relacionado con la base de datos y su funcionamiento sea igual de bueno que antes de subirlo. 
+<p>Llegados a este punto solo quedara revisar de vez en cuando, a medida que crezcan las estad&#237;sticas, la cantidad de usuarios y se realicen actualizaciones.
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Pantalla inicial, menu seleccion</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li>Menu dinamico en el cual se muestran las aplicaciones actualmente disponibles para su uso
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Inicio de la aplicacion de repaso, registro</span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><p>Pantalla obligatoria, solo apareceran las opciones, de registrarse y para poder acceder .
+<p>Tras registrarse o acceder como usuario ya registrado aparece una pantalla de bienvenida para llevarte al menu de la aplicacion
+</li>
+</ul>
+</li>
+<li><span id="show1_5" class="foldclosed" onClick="show_folder('1_5')" style="POSITION: absolute">+</span> <span id="hide1_5" class="foldopened" onClick="hide_folder('1_5')">-</span>
+<span style="font-family: SansSerif, sans-serif; font-weight: bold; ">menu navegacion de la aplicacion de repaso</span>
+<ul id="fold1_5" style="POSITION: relative; VISIBILITY: visible;"><li><p>Presentara elementos comunes en toda la aplicacion: el usuario con el que se accede, la opcion de cerrar sesion, junto a un peque&#241;o menu para seleccionar entre cuatro opciones(introducir preguntas, listar preguntas, iniciar las preguntas y ver las estadisticas generales).
+<p><span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Introduccion de nuevas preguntas</span>
+<ul><li><p>Aparecera un formulario, en el cual esta detallado que datos son necesarios para poder introducir una nueva pregunta 
+<p>menu de navegacion simple, con las opciones de enviar pregunta(una vez que los campos necesarios esten completos) y de volver a la pantalla de navegacion de la aplicacion de preguntas
+<ul><li><p>En caso de que se cree el registro aparecera una pantalla de control mostrando el exito de la operacion, en caso contrario mostrara el fracaso de la misma
+</li>
+</ul></li>
+</ul><p><span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Listado de preguntas</span>
+<ul><li><p>Se mostrara una tabla en la cual se muestran las preguntas y sus multiples respuestas teniendo marcada aquella que es correcta(con un fondo verde)
+<p>Volvera a contener un par de botones dando la opcion de volver a la pantalla anterior o de crear una nueva pregunta
+</li>
+</ul><p><span style="font-family: SansSerif, sans-serif; font-weight: bold; ">inicio de la ronda de preguntas</span>
+<ul><li>Llegara a una pagina que muestra pregunta a pregunta todos los registros que contiene
+
+</li>
+<li>Creada a modo tipo test para facilitar la interaccion 
+<ul><li><p>Al responder se generara una pantalla de control que mostrara los datos que se pasan y mostrara si la respuesta es la correcta o no. 
+</li>
+</ul>
+</li>
+<li>Las preguntas se mostraran aleatoriamente siguiendo un algoritmo dependiente de las estadisticas 
+
+</li>
+
+</ul><p><span style="font-family: SansSerif, sans-serif; font-weight: bold; ">Estadisticas</span>
+<ul><li><p>Las estadisticas generales se mostraran en formato tabla se&#241;alando en cada fila la pregunta y las veces que han acertado o fallado los usuarios en dicha pregunta
+</li>
+</ul></li>
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>
